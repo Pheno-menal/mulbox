@@ -37,6 +37,10 @@ textarea{
 	width: 300px;
   	height: 100px;
 	resize: none;
+	-webkit-box-shadow: none;
+    -moz-box-shadow: none;
+	box-shadow: none;
+	outline: none;
 }
 
 .mulboxTitle{
@@ -50,10 +54,7 @@ textarea{
 	margin: 0;
 }
 
-.titletest{
-	display: flex;
-	justify-content: center;
-}
+
 
 /* Question mark btn (calls about modal) */
 #helpQuestion{
@@ -119,26 +120,8 @@ textarea{
 	background-color:#808080; 
 }
 
-/* ------------------------ Wrappers ------------------------ */
-/* Compact mode 
-#titleWrap{
-	height: 30%;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	transform:translate(0,-8em);
-}
-
-#togBtn{
-	width: 100%;
-	display: flex;
-	justify-content: flex-end;
-	flex-direction: row;
-	position: relative;
-}
-*/
-/* Normal mode */
-
+/* ------------------------ Wrappers ------------------------ 	animation-name: animateCompact;
+	animation-duration: 0.5s; */
 #flexWrap{
 	width:	100%;
 	margin: 0 0 10em;
@@ -157,8 +140,23 @@ textarea{
 	justify-content: center;
 	align-items: center;
 	transform: translateY(9.5em);
-
 }
+
+@keyframes animateCompact{
+	from {transform: translateY(9.5);}
+	to {transform: translateY(0); }
+}
+
+@keyframes animateMargin {
+	from {margin: 0 0 10em;}
+	to {margin: 0 0 0;}
+}
+
+@keyframes animateInbox{
+	from {transform: translateY(0);}
+	to {transform: translateY(-9.5em);}
+}
+
 
 #togBtn{
 	width: 33.3%;
@@ -183,19 +181,20 @@ textarea{
 	min-width: 200px;
 	min-height: 50px;
 	resize: both;
+	
 }
 
 /* ------------------------ Mulboxes (textareas) ------------------------  */
 #mulboxes{
-	height: 60vh;
-	width: 100%;
+	max-height: 60%;
+	max-width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	align-content: flex-start;
 	flex-flow: row wrap;
-	z-index: 1;
 	position: relative;
+	overflow: hidden;
 }
 
 .mulbox{

@@ -46,7 +46,7 @@ $(document).ready(function() {
     // Add a box
     $("#mulboxes").append(`
       <div class="mulboxWrapper">
-        <textarea disabled class="mulbox" id="` + id + `" maxlength="140" rows="10" cols="30">` + value + `</textarea>
+        <textarea readonly class="mulbox" id="` + id + `" maxlength="140" rows="10" cols="30">` + value + `</textarea>
         <button class="btn btnCopy" data-clipboard-action="copy" data-clipboard-target="#`+ uniId +`">
           <i class="fas fa-copy"></i>
         </button>
@@ -114,26 +114,20 @@ $(document).ready(function() {
     console.log(e);
   });
 
-  var compactTogId = document.getElementById('compactTog');
+
+  //function compactMode(){}
+  var compactTogId = document.getElementById('inbox');
+  var inbox = document.getElementById('inbox')
   var title = document.getElementById('titleWrap')
   var flexWrap = document.getElementById('flexWrap')
   var compactTogBool;
 
-  compactTogId.addEventListener('click', function(){
-    compactTogBool = !compactTogBool;
-    if(compactTogBool) {
-      title.style.transform = "translateY(0em)"
-      title.style.order = "-1"
-      title.style.justifyContent ="flex-start"
-      flexWrap.style.margin = "0em"
-    } else {
-      title.style.transform = "translateY(9.5em)"
-      title.style.order = "0"
-      title.style.justifyContent ="center"
-      flexWrap.style.margin = "0 0 10em"
-    }
-    console.log(compactTogBool); 
-  });
+  compactTogId.oninput = function() {
+      setTimeout(function(){flexWrap.style.animation = "animateMargin .5s"; title.style.animation= "animateCompact .5s";}, 300);
+      setTimeout(function(){flexWrap.style.margin = "0em"; title.style.transform = "translateY(0)";}, 780);
+  };
+    
+  
 
 
 });
